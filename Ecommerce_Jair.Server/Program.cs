@@ -4,6 +4,11 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddUserSecrets<Program>();
+//logs para detectar errores
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.AddDebug();
+
 
 // Add services to the container.
 builder.Services.AddDbContext<EcommerceDbContext>(options =>
