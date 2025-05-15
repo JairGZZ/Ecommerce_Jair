@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Ecommerce_Jair.Server.BD.Models;
+namespace Ecommerce_Jair.Server.Models;
 
 public partial class ShoppingCart
 {

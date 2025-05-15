@@ -1,5 +1,4 @@
-﻿
-using Ecommerce_Jair.Server.BD.Models;
+﻿using Ecommerce_Jair.Server.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ecommerce_Jair.Server.BD.context;

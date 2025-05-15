@@ -1,8 +1,8 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Ecommerce_Jair.Server.BD.Models;
 using Ecommerce_Jair.Server.BD.context;
+using Ecommerce_Jair.Server.Models;
 
 namespace Ecommerce_Jair.Server.Controllers
 {
