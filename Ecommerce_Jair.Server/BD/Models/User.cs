@@ -25,7 +25,7 @@ public partial class User
 
     public string? PasswordResetToken { get; set; }
 
-    public bool? TwoFactorEnabled { get; set; }
+    public bool? TwoFactorEnabled { get; set; } = false;
 
     public virtual ICollection<Discount> Discounts { get; set; } = new List<Discount>();
 

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import './App.css';
-import React from 'react'
 
 interface Forecast {
     date: string;
@@ -21,15 +20,15 @@ function App() {
         : <table className="table table-striped" aria-labelledby="tableLabel">
             <thead>
                 <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
+                    <th>Fecha</th>
+                    <th>Temperatura. (C)</th>
+                    <th>Temperatura. (F)</th>
                     <th>Summary</th>
                 </tr>
             </thead>
             <tbody>
                 {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
+                    <tr key={forecast.summary}>
                         <td>{forecast.date}</td>
                         <td>{forecast.temperatureC}</td>
                         <td>{forecast.temperatureF}</td>
@@ -38,6 +37,7 @@ function App() {
                 )}
             </tbody>
         </table>;
+
 
     return (
         <div>
