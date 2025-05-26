@@ -14,7 +14,6 @@ public partial class EcommerceDbContext : DbContext
     {
     }
 
-    public virtual DbSet<AuditLog> AuditLogs { get; set; }
 
     public virtual DbSet<Category> Categories { get; set; }
 
@@ -46,28 +45,12 @@ public partial class EcommerceDbContext : DbContext
 
     public virtual DbSet<Wishlist> Wishlists { get; set; }
 
+    public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<AuditLog>(entity =>
-        {
-            entity.HasKey(e => e.AuditId).HasName("PK__AuditLog__A17F23B8F98E16ED");
-
-            entity.ToTable("AuditLog");
-
-            entity.Property(e => e.AuditId).HasColumnName("AuditID");
-            entity.Property(e => e.Action).HasMaxLength(50);
-            entity.Property(e => e.BrowserInfo).HasMaxLength(255);
-            entity.Property(e => e.ChangedAt)
-                .HasDefaultValueSql("(getdate())")
-                .HasColumnType("datetime");
-            entity.Property(e => e.Ipaddress)
-                .HasMaxLength(50)
-                .HasColumnName("IPAddress");
-            entity.Property(e => e.RecordId).HasColumnName("RecordID");
-            entity.Property(e => e.TableName).HasMaxLength(50);
-            entity.Property(e => e.UserId).HasColumnName("UserID");
-        });
+        
 
         modelBuilder.Entity<Category>(entity =>
         {
