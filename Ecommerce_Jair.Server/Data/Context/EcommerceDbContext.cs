@@ -44,13 +44,14 @@ public partial class EcommerceDbContext : DbContext
     public virtual DbSet<UserRole> UserRoles { get; set; }
 
     public virtual DbSet<Wishlist> Wishlists { get; set; }
-
+    
     public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
+
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        
+
 
         modelBuilder.Entity<Category>(entity =>
         {
