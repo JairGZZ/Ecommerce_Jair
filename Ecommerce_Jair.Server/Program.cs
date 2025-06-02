@@ -1,7 +1,12 @@
 using System.Text;
 using Ecommerce_Jair.Server.BD.context;
+using Ecommerce_Jair.Server.Models;
+using Ecommerce_Jair.Server.Repositories.implementations;
+using Ecommerce_Jair.Server.Repositories.Interfaces;
+using Ecommerce_Jair.Server.Services.implementations;
 using Ecommerce_Jair.Server.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
@@ -46,6 +51,10 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ITokenRefreshRepository, TokenRefreshRepository>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
 
 var app = builder.Build();
