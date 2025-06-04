@@ -1,7 +1,9 @@
-interface IAuthService
+using Ecommerce_Jair.Server.DTOs;
+
+public interface IAuthService
 {
-    Task<bool> RegisterUserAsync(string email, string password);
-    Task<bool> LoginUserAsync(string email, string password);
+    Task RegisterUserAsync(CreateUserDTO userDTO);
+    Task<LoginResponseDTO> AuthenticateUserAsync(LoginRequestDTO loginRequestDTO);
     Task<bool> LogoutUserAsync();
     Task<bool> ResetPasswordAsync(string email, string newPassword);
     Task<bool> ChangePasswordAsync(string oldPassword, string newPassword);
