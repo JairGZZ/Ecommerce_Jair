@@ -1,12 +1,13 @@
-using Ecommerce_Jair.Server.Models;
+using Ecommerce_Jair.Server.DTOs.Auth;
 
 namespace Ecommerce_Jair.Server.Services.Interfaces;
 
 public interface ITokenService
 {
-    string GenerateAccessToken(User user);
+    Task<string> GenerateAccessToken(UserTokenDTO user);
     string GenerateRefreshToken();
     DateTime GetTokenExpirationDate();
     DateTime GetRefreshTokenExpirationDate();
+
     
 }
