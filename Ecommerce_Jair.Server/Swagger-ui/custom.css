@@ -1,0 +1,169 @@
+﻿/* Tema: Abyss (Inspirado en VS Code) */
+:root {
+    --bg-primary: #0a0e14;
+    --bg-secondary: #050a10;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --accent-blue: #3794ff;
+    --accent-purple: #b180d7;
+    --border-dark: #1d2b3a;
+    --border-light: #2c3e50;
+    --danger: #ff5370;
+    --success: #a3be8c;
+}
+
+.swagger-ui {
+    background: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+    font-family: 'Segoe UI', 'Consolas', monospace;
+}
+
+/* Topbar - Barra superior */
+.swagger-ui .topbar {
+    background: linear-gradient(90deg, #0a0e14 0%, #121a24 100%) !important;
+    border-bottom: 1px solid var(--accent-blue) !important;
+    padding: 15px 0;
+}
+
+.swagger-ui .topbar .download-url-wrapper {
+    background: rgba(55, 148, 255, 0.1) !important;
+    border: 1px solid var(--accent-blue) !important;
+}
+
+.swagger-ui .topbar .download-url-wrapper input {
+    color: var(--text-primary) !important;
+    background: transparent !important;
+}
+
+.swagger-ui .topbar .download-url-wrapper .select-label {
+    color: var(--accent-blue) !important;
+}
+
+/* Títulos y encabezados */
+.swagger-ui .info .title {
+    color: var(--accent-blue) !important;
+    font-size: 28px;
+    text-shadow: 0 0 8px rgba(55, 148, 255, 0.3);
+}
+
+.swagger-ui .info hgroup.main a {
+    color: var(--accent-purple) !important;
+}
+
+.opblock-tag {
+    color: var(--accent-purple) !important;
+    font-size: 18px;
+    background: rgba(23, 23, 37, 0.5) !important;
+    border-bottom: 1px solid var(--border-light) !important;
+}
+
+/* Operaciones (endpoints) */
+.swagger-ui .opblock {
+    background: rgba(10, 14, 20, 0.7) !important;
+    border: 1px solid var(--border-dark) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.swagger-ui .opblock .opblock-summary {
+    border-bottom: 1px solid var(--border-light) !important;
+}
+
+.swagger-ui .opblock .opblock-summary-method {
+    background: var(--accent-blue) !important;
+    color: #000 !important;
+    font-weight: bold;
+    text-shadow: none;
+}
+
+.swagger-ui .opblock .opblock-summary-path {
+    color: var(--text-primary) !important;
+}
+
+.swagger-ui .opblock .opblock-summary-description {
+    color: var(--text-secondary) !important;
+}
+
+/* Botones */
+.swagger-ui .btn {
+    background: linear-gradient(135deg, #4a6ea9 0%, #3794ff 100%) !important;
+    border: none !important;
+    color: #000 !important;
+    font-weight: bold;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+.swagger-ui .btn.execute {
+    background: linear-gradient(135deg, #b180d7 0%, #8a4db9 100%) !important;
+    color: white !important;
+}
+
+/* Modelos y esquemas */
+.swagger-ui .model-title {
+    color: var(--accent-blue) !important;
+}
+
+.swagger-ui .model {
+    color: var(--text-secondary) !important;
+    background: rgba(23, 23, 37, 0.5) !important;
+    border: 1px solid var(--border-light) !important;
+}
+
+/* Tablas */
+.swagger-ui table thead tr {
+    background: rgba(23, 23, 37, 0.7) !important;
+    color: var(--accent-blue) !important;
+}
+
+.swagger-ui table tbody tr td {
+    border-bottom: 1px solid var(--border-dark) !important;
+}
+
+/* Inputs y selects */
+.swagger-ui input, .swagger-ui select {
+    background: rgba(5, 10, 16, 0.7) !important;
+    border: 1px solid var(--border-light) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Secciones colapsables */
+.swagger-ui .opblock .opblock-section-header {
+    background: rgba(23, 23, 37, 0.5) !important;
+    border-bottom: 1px solid var(--border-light) !important;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 10px;
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #4a6ea9 0%, #3794ff 100%);
+    border-radius: 4px;
+}
+
+/* Efectos especiales */
+.swagger-ui .opblock .opblock-summary:hover {
+    background: rgba(55, 148, 255, 0.1) !important;
+}
+
+.swagger-ui .btn:hover {
+    box-shadow: 0 0 8px rgba(55, 148, 255, 0.5);
+}
+
+/* Panel de autorización */
+.swagger-ui .auth-container {
+    background: rgba(23, 23, 37, 0.5) !important;
+    border: 1px solid var(--border-light) !important;
+}
+
+/* Mensajes de estado */
+.swagger-ui .response-col_status .response-undocumented {
+    color: var(--accent-purple) !important;
+}
+
+.swagger-ui .response-col_links {
+    color: var(--accent-blue) !important;
+}
