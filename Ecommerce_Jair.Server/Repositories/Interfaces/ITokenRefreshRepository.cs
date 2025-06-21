@@ -2,11 +2,11 @@ using Ecommerce_Jair.Server.Models;
 
 namespace Ecommerce_Jair.Server.Repositories.Interfaces;
 
-interface ITokenRefreshRepository
+public interface ITokenRefreshRepository
 {
-    Task AddAsync(RefreshToken token);
+    Task AddAsync(UserTokens token);
 
-    Task<RefreshToken> GetByTokenAsync(string token);
+    Task<UserTokens> GetByTokenAsync(string token);
 
     Task InvalidateAsync(string token);
 

@@ -14,23 +14,24 @@ public class TokenRefreshRepository : ITokenRefreshRepository
         _context = context;
     }
 
-    public async Task AddAsync(RefreshToken token)
+    public async Task AddAsync(UserTokens token)
     {
-        await _context.RefreshTokens.AddAsync(token);
+        await _context.UserTokens.AddAsync(token);
     }
 
-    public async Task<RefreshToken> GetByTokenAsync(string token)
+    public async Task<UserTokens> GetByTokenAsync(string token)
     {
-        var refreshToken = await _context.RefreshTokens.FirstOrDefaultAsync(t => t.Token == token);
+        var refreshToken = await _context.UserTokens.FirstOrDefaultAsync(t => t.Token == token);
         if (refreshToken == null) return null;
         return refreshToken;
     }
 
     public async Task InvalidateAsync(string token)
     {
-        var refreshToken = await _context.RefreshTokens.FirstOrDefaultAsync(t => t.Token == token);
+        var refreshToken = await _context.UserTokens.FirstOrDefaultAsync(t => t.Token == token);
         if (refreshToken == null) return;
         refreshToken.Revoked = true;
+        _context.Update(refreshToken);
     }
 
     public async Task SaveChangesAsync()

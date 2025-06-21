@@ -45,12 +45,43 @@ public partial class EcommerceDbContext : DbContext
 
     public virtual DbSet<Wishlist> Wishlists { get; set; }
     
-    public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
+    public virtual DbSet<UserTokens> UserTokens { get; set; }
 
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<UserTokens>(entity =>
+        {
+            entity.ToTable("UserTokens");
+
+            entity.HasKey(e => e.Id);
+
+            entity.Property(e => e.Id)
+                  .HasColumnName("ID");
+
+            entity.Property(e => e.UserId)
+                  .IsRequired();
+
+            entity.Property(e => e.Token)
+                  .HasMaxLength(255)
+                  .IsRequired();
+
+            entity.Property(e => e.ExpiresAt)
+                  .IsRequired();
+
+            entity.Property(e => e.Revoked)
+                  .IsRequired();
+
+            entity.Property(e => e.TokenType)
+                  .HasMaxLength(30)
+                  .IsRequired();
+
+            entity.HasOne(e => e.User)
+                  .WithMany(u => u.UserTokens)
+                  .HasForeignKey(e => e.UserId)
+                  .OnDelete(DeleteBehavior.Cascade);
+        });
 
 
         modelBuilder.Entity<Category>(entity =>
