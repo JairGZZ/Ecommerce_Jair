@@ -6,10 +6,13 @@ namespace Ecommerce_Jair.Server.Services.Interfaces
 
     public interface IUserService
     {
-        Task<User> GetUserByIdAsync(int userId);
-        Task<List<User>> GetAllUsersAsync();
-        Task<bool> DeleteUserAsync(int userId);
+        Task<ShowUserDTO> GetUserByIdAsync(int userId);
+        Task<List<ShowUserDTO>> GetAllUsersAsync();
+        Task DeleteUserAsync(int userId);
         Task<bool> UpdateUserAsync(int userId, User user);
-        Task<bool> CreateUserAsync(CreateUserDTO user);
+        Task CreateUserAsync(User user);
+        Task<User> GetUserByEmailAsync(string email);
+        Task<bool> EmailExistsAsync(string email);
+        Task UpdateLastLoginAsync(int id);
     }
 }

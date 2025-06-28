@@ -23,22 +23,7 @@ public class UserTokensRepository : IUserTokensRepository
     {
         var refreshToken = await _context.UserTokens
             .Where(t => t.Token == token && t.TokenType == tokenType)
-            .Select(t => new UserTokens
-            {
-                Id = t.Id,
-                UserId = t.UserId,
-                Token = t.Token,
-                ExpiresAt = t.ExpiresAt,
-                Revoked = t.Revoked,
-                TokenType = t.TokenType,
-                User = new User
-                {
-                    FirstName = t.User.FirstName,
-                    LastName = t.User.LastName,
-                    Email = t.User.Email,
-                    
-                }
-            })
+            .Include(t => t.User)
             .FirstOrDefaultAsync();
 
         return refreshToken;

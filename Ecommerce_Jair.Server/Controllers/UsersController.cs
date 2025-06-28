@@ -11,35 +11,38 @@ namespace Ecommerce_Jair.Server.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
-        public UsersController(IUserService userService)
+        private readonly ITokenService _tokenService;
+        public UsersController(IUserService userService, ITokenService tokenService)
         {
             _userService = userService;
+            _tokenService = tokenService;
         }
 
         // GET: api/Users
         [HttpGet("GetAllUsers")]
-        public async Task<ActionResult<IEnumerable<User>>> GetAllUsers()
+        public async Task<ActionResult<IEnumerable<ShowUserDTO>>> GetAllUsers()
 
         {
-            return await _userService.GetAllUsersAsync();
+            var users = await _userService.GetAllUsersAsync();
+            return Ok(users);
         }
 
         // GET: api/Users/5
         [HttpGet("GetUserById/{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<ShowUserDTO>> GetUser(int id)
         {
 
             var user = await _userService.GetUserByIdAsync(id);
             if (user == null) return NotFound();
-            Console.WriteLine(user.UserId.ToString() + " " + user.FirstName + " " + user.LastName);
             return user;
         }
 
         // POST: api/Users
         [HttpPost("CreateUser")]
-        public async Task<ActionResult<User>> CreateUser(CreateUserDTO userDTO)
+        public async Task<ActionResult<User>> CreateUser(User user)
         {
-            var createdUser = await _userService.CreateUserAsync(userDTO);
+
+            await _userService.CreateUserAsync(user);
             return Ok("SE REGISTRO CORRECTAMENTE EL USUARIO"); 
         }
 
@@ -59,7 +62,7 @@ namespace Ecommerce_Jair.Server.Controllers
             var user = await _userService.GetUserByIdAsync(id);
             if (user == null) return NotFound();
             await _userService.DeleteUserAsync(id);
-            return NoContent();
+            return Ok("SE ELIMINO CORRECTAMENTE EL USUARIO");
         }
     }
 

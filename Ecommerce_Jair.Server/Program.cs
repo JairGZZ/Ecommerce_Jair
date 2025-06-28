@@ -15,7 +15,10 @@ using Scalar.AspNetCore;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Configuration.AddUserSecrets<Program>();
+
 builder.Services.Configure<TokenSettings>(builder.Configuration.GetSection("TokenSettings"));
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+
 
 //logs para detectar errores
 builder.Logging.ClearProviders();
@@ -59,7 +62,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<ITokenRefreshRepository, TokenRefreshRepository>();
+builder.Services.AddScoped<IUserTokensRepository, UserTokensRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
@@ -86,7 +89,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(options =>
     {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "JairsitoAPI");
         options.InjectStylesheet("/static/custom.css"); // Ruta personalizada
     });
 }

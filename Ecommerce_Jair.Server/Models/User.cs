@@ -24,6 +24,7 @@ public partial class User
     public DateTime? LastPasswordChange { get; set; }
 
     public string? PasswordResetToken { get; set; }
+    public bool IsEmailConfirmed { get; set; }
 
     public bool? TwoFactorEnabled { get; set; } = false;
 
@@ -39,5 +40,5 @@ public partial class User
 
     public virtual ICollection<Wishlist> Wishlists { get; set; } = new List<Wishlist>();
 
-    public virtual ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
+    public virtual ICollection<UserTokens> UserTokens { get; set; } = new List<UserTokens>();
 }
