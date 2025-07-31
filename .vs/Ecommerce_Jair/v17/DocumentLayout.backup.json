@@ -1,0 +1,362 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\dev\\.net Projects\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\models\\results\\tresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\models\\results\\tresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\models\\results\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\models\\results\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\services\\implementations\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\services\\implementations\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\services\\implementations\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\services\\implementations\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\controllers\\tokencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\controllers\\tokencontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\repositories\\implementations\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\repositories\\implementations\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\migrations\\ecommercedbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\migrations\\ecommercedbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\dtos\\auth\\loginresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\dtos\\auth\\loginresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\services\\interfaces\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\services\\interfaces\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\data\\context\\ecommercedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\data\\context\\ecommercedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\migrations\\20250730181827_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\migrations\\20250730181827_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\services\\implementations\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\services\\implementations\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jairg\\AppData\\Roaming\\Microsoft\\UserSecrets\\979572bb-2197-4b07-828f-9e141535e229\\secrets.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{89247CD5-C19E-4437-B4D1-0E999D9CFD04}|Ecommerce_Jair.ServerTests\\Ecommerce_Jair.ServerTests.csproj|c:\\dev\\.net projects\\ecommerce_jair.servertests\\services\\tokenservicetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{89247CD5-C19E-4437-B4D1-0E999D9CFD04}|Ecommerce_Jair.ServerTests\\Ecommerce_Jair.ServerTests.csproj|solutionrelative:ecommerce_jair.servertests\\services\\tokenservicetest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\dtos\\auth\\loginrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\dtos\\auth\\loginrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\full_script.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\full_script.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|c:\\dev\\.net projects\\ecommerce_jair.server\\script_completo.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{F3F4D10A-6BB4-4B1C-B482-B76447310C04}|Ecommerce_Jair.Server\\Ecommerce_Jair.Server.csproj|solutionrelative:ecommerce_jair.server\\script_completo.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TResult.cs",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Models\\Results\\TResult.cs",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\Models\\Results\\TResult.cs",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Models\\Results\\TResult.cs",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\Models\\Results\\TResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T05:09:51.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Result.cs",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Models\\Results\\Result.cs",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\Models\\Results\\Result.cs",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Models\\Results\\Result.cs",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\Models\\Results\\Result.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T05:09:40.423Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\Models\\User.cs",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Models\\User.cs",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\Models\\User.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA3wBcAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T04:20:49.98Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Repositories\\implementations\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\Repositories\\implementations\\UserRepository.cs",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Repositories\\implementations\\UserRepository.cs",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\Repositories\\implementations\\UserRepository.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T01:21:34.935Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TokenController.cs",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Controllers\\TokenController.cs",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\Controllers\\TokenController.cs",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Controllers\\TokenController.cs",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\Controllers\\TokenController.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABYAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T00:54:53.914Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "EcommerceDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Migrations\\EcommerceDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\Migrations\\EcommerceDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Migrations\\EcommerceDbContextModelSnapshot.cs",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\Migrations\\EcommerceDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T00:52:51.164Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TokenService.cs",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Services\\implementations\\TokenService.cs",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\Services\\implementations\\TokenService.cs",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Services\\implementations\\TokenService.cs",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\Services\\implementations\\TokenService.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAQwHIAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T00:22:58.129Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IEmailService.cs",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Services\\Interfaces\\IEmailService.cs",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\Services\\Interfaces\\IEmailService.cs",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Services\\Interfaces\\IEmailService.cs",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\Services\\Interfaces\\IEmailService.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T00:22:44.754Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Services\\implementations\\AuthService.cs",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\Services\\implementations\\AuthService.cs",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Services\\implementations\\AuthService.cs",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\Services\\implementations\\AuthService.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAACQAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-31T00:21:30.109Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Services\\implementations\\EmailService.cs",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\Services\\implementations\\EmailService.cs",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Services\\implementations\\EmailService.cs",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\Services\\implementations\\EmailService.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAwCQAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T22:25:49.76Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Program.cs",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\Program.cs",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Program.cs",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\Program.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAYwBIAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T21:35:56.477Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LoginResponseDTO.cs",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\DTOs\\Auth\\LoginResponseDTO.cs",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\DTOs\\Auth\\LoginResponseDTO.cs",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\DTOs\\Auth\\LoginResponseDTO.cs",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\DTOs\\Auth\\LoginResponseDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:25:01.844Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "LoginRequestDTO.cs",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\DTOs\\Auth\\LoginRequestDTO.cs",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\DTOs\\Auth\\LoginRequestDTO.cs",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\DTOs\\Auth\\LoginRequestDTO.cs",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\DTOs\\Auth\\LoginRequestDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T19:24:56.481Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "full_script.sql",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\full_script.sql",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\full_script.sql",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\full_script.sql",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\full_script.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-07-30T18:19:00.165Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "20250730181827_InitialCreate.cs",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Migrations\\20250730181827_InitialCreate.cs",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\Migrations\\20250730181827_InitialCreate.cs",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Migrations\\20250730181827_InitialCreate.cs",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\Migrations\\20250730181827_InitialCreate.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T18:18:36.345Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "EcommerceDbContext.cs",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Data\\Context\\EcommerceDbContext.cs",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\Data\\Context\\EcommerceDbContext.cs",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\Data\\Context\\EcommerceDbContext.cs",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\Data\\Context\\EcommerceDbContext.cs",
+              "ViewState": "AgIAAOcAAAAAAAAAAAAlwF0BAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T14:46:40.679Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\appsettings.Development.json",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\appsettings.Development.json",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-30T21:37:04.549Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\appsettings.json",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\appsettings.json",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\appsettings.json",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-30T21:37:06.097Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "secrets.json",
+              "DocumentMoniker": "C:\\Users\\jairg\\AppData\\Roaming\\Microsoft\\UserSecrets\\979572bb-2197-4b07-828f-9e141535e229\\secrets.json",
+              "RelativeDocumentMoniker": "..\\..\\Users\\jairg\\AppData\\Roaming\\Microsoft\\UserSecrets\\979572bb-2197-4b07-828f-9e141535e229\\secrets.json",
+              "ToolTip": "C:\\Users\\jairg\\AppData\\Roaming\\Microsoft\\UserSecrets\\979572bb-2197-4b07-828f-9e141535e229\\secrets.json",
+              "RelativeToolTip": "..\\..\\Users\\jairg\\AppData\\Roaming\\Microsoft\\UserSecrets\\979572bb-2197-4b07-828f-9e141535e229\\secrets.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-07-30T18:09:52.819Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "script_completo.sql",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\script_completo.sql",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.Server\\script_completo.sql",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.Server\\script_completo.sql",
+              "RelativeToolTip": "Ecommerce_Jair.Server\\script_completo.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-07-30T17:55:06.023Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "TokenServiceTest.cs",
+              "DocumentMoniker": "C:\\dev\\.net Projects\\Ecommerce_Jair.ServerTests\\services\\TokenServiceTest.cs",
+              "RelativeDocumentMoniker": "Ecommerce_Jair.ServerTests\\services\\TokenServiceTest.cs",
+              "ToolTip": "C:\\dev\\.net Projects\\Ecommerce_Jair.ServerTests\\services\\TokenServiceTest.cs",
+              "RelativeToolTip": "Ecommerce_Jair.ServerTests\\services\\TokenServiceTest.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAYAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T15:38:40.417Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
