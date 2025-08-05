@@ -1,10 +1,11 @@
 using Ecommerce_Jair.Server.Models;
+using Ecommerce_Jair.Server.Models.Results;
 
 namespace Ecommerce_Jair.Server.Services.Interfaces;
 
 public interface IUserRoleService
 {
-    Task AssignRoleToUserAsync(int userId);
-    Task SaveChangesAsync();
-    Task<UserRole> GetUserRoleAsync(int userId);
+    Task<Result> AssignRoleToUserAsync(int userId);
+    Task<Result> SaveChangesAsync();
+    Task<TResult<UserRole>> GetUserRoleAsync(int userId);
 }

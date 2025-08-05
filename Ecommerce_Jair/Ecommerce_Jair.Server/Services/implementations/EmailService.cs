@@ -1,4 +1,5 @@
-﻿using Ecommerce_Jair.Server.Repositories.Interfaces;
+﻿using Ecommerce_Jair.Server.Models.Results;
+using Ecommerce_Jair.Server.Repositories.Interfaces;
 using Ecommerce_Jair.Server.Services.Interfaces;
 using Ecommerce_Jair.Server.Utils;
 using MailKit.Net.Smtp;
@@ -19,7 +20,7 @@ namespace Ecommerce_Jair.Server.Services.implementations
             _userTokensRepository = userTokensRepository;
         }
 
-        public async Task SendEmailAsync(string recipientEmail, string subject, string body)
+        public async Task<Result> SendEmailAsync(string recipientEmail, string subject, string body)
         {
             var email = new MimeMessage();
             email.From.Add(new MailboxAddress("Ecommerce_Jair", _emailSettings.SenderEmail));
@@ -39,6 +40,14 @@ namespace Ecommerce_Jair.Server.Services.implementations
                 _emailSettings.SenderPassword);
             await smtp.SendAsync(email);
             await smtp.DisconnectAsync(true);
+
+            return Result.Ok();
+
+
+
+
+
+
         }
 
         

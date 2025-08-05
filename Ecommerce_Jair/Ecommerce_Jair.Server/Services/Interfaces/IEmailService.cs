@@ -1,4 +1,5 @@
-﻿using MimeKit;
+﻿using Ecommerce_Jair.Server.Models.Results;
+using MimeKit;
 
 namespace Ecommerce_Jair.Server.Services.Interfaces
 {
@@ -11,7 +12,7 @@ namespace Ecommerce_Jair.Server.Services.Interfaces
         /// <param name="recipientEmail">Correo del destinatario.</param>
         /// <param name="subject">Asunto del mensaje.</param>
         /// <param name="body">Cuerpo del mensaje (HTML permitido).</param>
-        Task SendEmailAsync(string recipientEmail, string subject, string body);
+        Task<Result> SendEmailAsync(string recipientEmail, string subject, string body);
     }
 
     

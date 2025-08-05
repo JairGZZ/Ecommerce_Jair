@@ -3,6 +3,7 @@ using System.Security.Authentication;
 using Ecommerce_Jair.Server.DTOs;
 using Ecommerce_Jair.Server.DTOs.Auth;
 using Ecommerce_Jair.Server.Models;
+using Ecommerce_Jair.Server.Models.Results;
 using Ecommerce_Jair.Server.Repositories.Interfaces;
 using Ecommerce_Jair.Server.Services.Interfaces;
 using Ecommerce_Jair.Server.Utils;
@@ -34,11 +35,11 @@ public class AuthService : IAuthService
         _userRoleService = userRoleService;
         _emailService = emailService;
     }
-    public async Task RegisterUserAsync(CreateUserDTO userDTO)
+    public async Task<Result> RegisterUserAsync(CreateUserDTO userDTO)
     {
         var user = await _userService.GetUserByEmailAsync(userDTO.Email);
-        if (user != null) throw new AuthenticationException("User already exists");
-        if (userDTO.Password != userDTO.ConfirmPassword) throw new AuthenticationException("Passwords do not match");
+        if (user != null) return Result.Fail("User already exists");
+        if (userDTO.Password != userDTO.ConfirmPassword) return Result.Fail("las cotraseñas no coinciden");
         var newUser = new User
         {
             FirstName = userDTO.FirstName,
@@ -51,65 +52,72 @@ public class AuthService : IAuthService
         newUser.PasswordHash = _passwordHasher.HashPassword(newUser, userDTO.Password);
         await _userService.CreateUserAsync(newUser);
 
-        string emailConfirmationToken = await _tokenService.GenerateEmailConfirmationToken(newUser.UserId);
-        string link = GenerateEmailConfirmationLink("http://localhost:5105", newUser.UserId, emailConfirmationToken);
+        var emailConfirmationToken = await _tokenService.GenerateEmailConfirmationToken(newUser.UserId);
+        string link = GenerateEmailConfirmationLink("http://localhost:5105", newUser.UserId, emailConfirmationToken.Data);
         await _emailService.SendEmailAsync(userDTO.Email, "Confirmacion de Correo", "Si mi logica de chimpance no me falla, esto deberia llegar sin problemas " + link);
 
         await _userRoleService.AssignRoleToUserAsync(newUser.UserId);
+        return Result.Ok();
     }
-    private string GenerateEmailConfirmationLink(string baseUrl,int idUser,string emailConfirmationToken)
+    private string GenerateEmailConfirmationLink(string baseUrl, int idUser, string emailConfirmationToken)
     {
         return $"{baseUrl}/api/Token/ConfirmEmail?token={Uri.EscapeDataString(emailConfirmationToken)}&userId={idUser}";
     }
 
 
-    public async Task<LoginResponseDTO> AuthenticateUserAsync(LoginRequestDTO loginRequestDTO)
+    public async Task<TResult<LoginResponseDTO>> AuthenticateUserAsync(LoginRequestDTO loginRequestDTO)
     {
         // 1. Validar usuario y contraseña
         var user = await ValidateUserCredentialsAsync(loginRequestDTO.Email, loginRequestDTO.Password);
 
+        if (!user.Success)
+            return TResult<LoginResponseDTO>.Fail(user.Error);
+
+
+
         // 2. Crear el DTO mínimo para generar tokens
         var userTokenDTO = new UserTokenDTO
         {
-            UserId = user.UserId,
-            FirstName = user.FirstName,
-            LastName = user.LastName,
-            Email = user.Email
+            UserId = user.Data.UserId,
+            FirstName = user.Data.FirstName,
+            LastName = user.Data.LastName,
+            Email = user.Data.Email
         };
 
         // 3. Generar accessToken y refreshToken
         var (accessToken, refreshToken) = await CreateTokensForUser(userTokenDTO);
 
         // 4. Guardar el refresh token en BD
-        await SaveRefreshTokenAsync(user.UserId, refreshToken);
+        await SaveRefreshTokenAsync(user.Data.UserId, refreshToken);
 
         // 5. Armar y devolver la respuesta
-        return new LoginResponseDTO
+        var resposeDto = new LoginResponseDTO
         {
             Token = accessToken,
             RefreshToken = refreshToken,
             AccessTokenExpiresAt = _tokenService.GetTokenExpirationDate()
         };
+
+        return TResult<LoginResponseDTO>.Ok(resposeDto);
     }
 
     /// <summary>
     /// 1) Obtiene el usuario por email, 2) verifica existencia y contraseña, 
     /// 3) actualiza LastLogin, 4) retorna la entidad User.
     /// </summary>
-    private async Task<User> ValidateUserCredentialsAsync(string email, string password)
+    private async Task<TResult<User>> ValidateUserCredentialsAsync(string email, string password)
     {
         var user = await _userService.GetUserByEmailAsync(email);
-        if (user == null)
-            throw new AuthenticationException("Usuario no encontrado o credenciales inválidas");
+        if (user == null) return TResult<User>.Fail("Usuario no encontrado o credenciales inválidas");
 
         var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, password);
         if (result == PasswordVerificationResult.Failed)
-            throw new AuthenticationException("Usuario no autenticado");
+            return TResult<User>.Fail("Usuario no autenticado");
 
         // Actualizar la fecha/hora del último login
         await _userService.UpdateLastLoginAsync(user.UserId);
 
-        return user;
+        return TResult<User>.Ok(user);
     }
 
     /// <summary>
@@ -118,9 +126,9 @@ public class AuthService : IAuthService
     private async Task<(string accessToken, string refreshToken)> CreateTokensForUser(UserTokenDTO userTokenDTO)
     {
         
-        string accessToken = await _tokenService.GenerateAccessToken(userTokenDTO);
+        var accessToken = await _tokenService.GenerateAccessToken(userTokenDTO);
         string refreshToken = _tokenService.GenerateRefreshToken();
-        return (accessToken, refreshToken);
+        return (accessToken.Data, refreshToken);
     }
 
     /// <summary>
@@ -140,21 +148,25 @@ public class AuthService : IAuthService
         await _userTokensRepository.AddAsync(refreshTokenModel);
         await _userTokensRepository.SaveChangesAsync();
     }
-    public async Task LogoutUserAsync(string refreshToken)
+    public async Task<Result> LogoutUserAsync(string refreshToken)
     {
-        if (await _tokenService.ValidateRefreshToken(refreshToken))
+        var isValid = await _tokenService.ValidateRefreshToken(refreshToken);
+        if (!isValid.Success)
         {
-
+            return Result.Fail("el token es invalido");
         }
         await _userTokensRepository.InvalidateAsync(refreshToken);
         await _userTokensRepository.SaveChangesAsync();
+        return Result.Ok();
     }
-    public async Task<LoginResponseDTO> RefreshTokenAsync(string refreshToken)
+    public async Task<TResult<LoginResponseDTO>> RefreshTokenAsync(string refreshToken)
     {
         var refreshTokenModel = await _userTokensRepository.GetByTokenAsync(refreshToken, TokenTypes.RefreshToken);
-        if (!await _tokenService.ValidateRefreshToken(refreshToken))
+
+        var isRefreshTokenValid =  await _tokenService.ValidateRefreshToken(refreshToken);
+        if (!isRefreshTokenValid.Success)
         {
-            throw new AuthenticationException();
+            return TResult<LoginResponseDTO>.Fail(isRefreshTokenValid.Error);
 
         }
         await _userTokensRepository.InvalidateAsync(refreshToken);
@@ -169,20 +181,13 @@ public class AuthService : IAuthService
         };
         (string accessToken, string newRefreshToken) = await CreateTokensForUser(userTokenDTO);
         await SaveRefreshTokenAsync(refreshTokenModel.UserId, newRefreshToken);
-        return new LoginResponseDTO
+        return TResult<LoginResponseDTO>.Ok( new LoginResponseDTO
         {
             Token = accessToken,
             RefreshToken = newRefreshToken,
             AccessTokenExpiresAt = _tokenService.GetTokenExpirationDate()
-        };
+        });
     }
-    private void ValidateRefreshToke(UserTokens refreshTokenModel)
-    {
-        if (refreshTokenModel == null || refreshTokenModel.Revoked || refreshTokenModel.ExpiresAt < DateTime.UtcNow) 
-            throw new SecurityTokenExpiredException("Token inválido o ya expirado");
-
-    }
-    
 
     public Task<bool> ResetPasswordAsync(string email, string newPassword)
     {

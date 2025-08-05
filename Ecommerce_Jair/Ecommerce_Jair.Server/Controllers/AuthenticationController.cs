@@ -17,20 +17,34 @@ namespace Ecommerce_Jair.Server.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> RegisterUserAsync(CreateUserDTO userDTO)
         {
-            await _authService.RegisterUserAsync(userDTO);
-            return Ok();
+            var result = await _authService.RegisterUserAsync(userDTO);
+
+            if (!result.Success)
+            {
+                return BadRequest(result.Error);
+            }
+            return Created();
         }
         [HttpPost("login")]
         public async Task<IActionResult> LoginUserAsync(LoginRequestDTO loginRequestDTO)
         {
-            return Ok(await _authService.AuthenticateUserAsync(loginRequestDTO));
+            var result = await _authService.AuthenticateUserAsync(loginRequestDTO);
+            if (!result.Success)
+            {
+                return BadRequest(result.Error);
+            }
+            return Ok(result.Data);
 
         }
         [HttpPost("logout")]
         public async Task<IActionResult> LogoutUserAsync([FromBody] LogoutRequestDTO logoutRequestDTO)
         {
-            await _authService.LogoutUserAsync(logoutRequestDTO.RefreshToken);
-            return Ok();
+            var isSucces = await _authService.LogoutUserAsync(logoutRequestDTO.RefreshToken);
+            if (!isSucces.Success)
+            {
+                return BadRequest(isSucces.Error);
+            }
+            return Ok("Cierre de sesion exitoso");
         }
       
         

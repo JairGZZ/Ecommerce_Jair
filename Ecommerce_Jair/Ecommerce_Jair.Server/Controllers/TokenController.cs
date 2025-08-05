@@ -21,7 +21,7 @@ namespace Ecommerce_Jair.Server.Controllers
         public async Task<IActionResult> ConfirmEmail(string token,int userId)
         {
             var isValid =  await _tokenService.ValidateEmailConfirmationTokenAsync(userId, token);
-            if (!isValid)
+            if (!isValid.Success)
             {
                 return BadRequest("Invalid or expired token.");
             }

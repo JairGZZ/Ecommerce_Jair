@@ -1,4 +1,5 @@
 using Ecommerce_Jair.Server.Models;
+using Ecommerce_Jair.Server.Models.Results;
 using Ecommerce_Jair.Server.Repositories.Interfaces;
 using Ecommerce_Jair.Server.Services.Interfaces;
 
@@ -10,7 +11,7 @@ public class UserRoleService : IUserRoleService
     {
         _userRoleRepository = userRoleRepository;
     }
-    public async Task AssignRoleToUserAsync(int userId)
+    public async Task<Result> AssignRoleToUserAsync(int userId)
     {
         var userRole = new UserRole
         {
@@ -22,13 +23,15 @@ public class UserRoleService : IUserRoleService
         };
         await _userRoleRepository.AssignRoleToUserAsync(userRole);
         await _userRoleRepository.SaveChangesAsync();
+        return Result.Ok();
     }
-    public async Task<UserRole> GetUserRoleAsync(int userId)
+    public async Task<TResult<UserRole>> GetUserRoleAsync(int userId)
     {
-        return await _userRoleRepository.GetUserRoleAsync(userId);
+        return TResult<UserRole>.Ok(await _userRoleRepository.GetUserRoleAsync(userId));
     }
-    public async Task SaveChangesAsync()
+    public async Task<Result> SaveChangesAsync()
     {
         await _userRoleRepository.SaveChangesAsync();
+        return Result.Ok();
     }
 }

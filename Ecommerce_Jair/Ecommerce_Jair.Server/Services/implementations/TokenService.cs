@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Text;
 using Ecommerce_Jair.Server.DTOs.Auth;
 using Ecommerce_Jair.Server.Models;
+using Ecommerce_Jair.Server.Models.Results;
 using Ecommerce_Jair.Server.Repositories.Interfaces;
 using Ecommerce_Jair.Server.Services.Interfaces;
 using Ecommerce_Jair.Server.Utils;
@@ -28,7 +29,7 @@ public class TokenService : ITokenService
         _userRepository = userRepository;
     }
 
-    public async Task<string> GenerateAccessToken(UserTokenDTO user)
+    public async Task<TResult<string>> GenerateAccessToken(UserTokenDTO user)
     {
         var userRole = await _userRoleService.GetUserRoleAsync(user.UserId);
         Claim[] claims =
@@ -36,7 +37,7 @@ public class TokenService : ITokenService
             new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
             new Claim(ClaimTypes.Name, user.FirstName + " " + user.LastName),
             new Claim(ClaimTypes.Email, user.Email),
-            new Claim(ClaimTypes.Role, userRole.RoleId.ToString()),
+            new Claim(ClaimTypes.Role, userRole.Data.RoleId.ToString()),
         ];
         var expires = DateTime.UtcNow.AddMinutes(_tokenSettings.ExpiryMinutes);
         byte[] keyBytes = Encoding.UTF8.GetBytes(_tokenSettings.SecretKey);
@@ -55,7 +56,7 @@ public class TokenService : ITokenService
 
         JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
 
-        return handler.WriteToken(token);
+        return TResult<String>.Ok(handler.WriteToken(token));
     }
 
     public string GenerateRefreshToken()
@@ -73,7 +74,7 @@ public class TokenService : ITokenService
         return DateTime.UtcNow.AddDays(7);
     }
 
-    public async Task<string> GenerateEmailConfirmationToken(int userId)
+    public async Task<TResult<string>> GenerateEmailConfirmationToken(int userId)
     {
         var token = TokenUtils.GenerateSecureToken();
         var userToken = new UserTokens
@@ -91,40 +92,40 @@ public class TokenService : ITokenService
         
         await _userTokensRepository.AddAsync(userToken);
         await _userTokensRepository.SaveChangesAsync();
-        return token;
+        return TResult<string>.Ok(token);
         
     }
      
-    public async Task<bool> ValidateEmailConfirmationTokenAsync(int userId, string token)
+    public async Task<TResult<bool>> ValidateEmailConfirmationTokenAsync(int userId, string token)
     {
         var tokenExists = await _userTokensRepository.GetByTokenAsync(token, TokenTypes.EmailConfirmationToken);
         if (tokenExists.UserId != userId )
         {
-            return false;
+            return TResult<bool>.Fail("Token Invalido");
         }
         if(tokenExists.ExpiresAt < DateTime.UtcNow)
         {
-            return false;
+            return TResult<bool>.Fail("El token Expiro");
         }
         if (tokenExists.Revoked)
         {
-            return false;
+            return TResult<bool>.Fail("Token Revocadi");
         }
         tokenExists.Revoked = true;
         var user = await _userRepository.GetUserByIdAsync(userId);
         user.IsEmailConfirmed = true;
         await _userTokensRepository.SaveChangesAsync();
-        return true;
+        return TResult<bool>.Ok(true);
     }
 
-    public async Task<bool> ValidateRefreshToken(string refreshToken)
+    public async Task<TResult<bool>> ValidateRefreshToken(string refreshToken)
     {
         var userTokenModel = await _userTokensRepository.GetByTokenAsync(refreshToken, TokenTypes.RefreshToken);
 
         if (userTokenModel == null || userTokenModel.Revoked || userTokenModel.ExpiresAt < DateTime.UtcNow) {
-            return false;
+            return TResult<bool>.Fail("Token expirado o invalido");
 
         }
-        return true;
+        return TResult<bool>.Ok(true);
     }
 }
