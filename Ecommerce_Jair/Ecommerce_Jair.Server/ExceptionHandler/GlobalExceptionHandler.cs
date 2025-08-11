@@ -6,8 +6,18 @@ namespace Ecommerce_Jair.Server.ExceptionHandler
 {
     public class GlobalExceptionHandler : IExceptionHandler
     {
+        private readonly ILogger<GlobalExceptionHandler> _logger;
+
+        public GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
+        {
+            _logger = logger;
+        }
+
         public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception, CancellationToken cancellationToken)
         {
+            _logger.LogError(exception, "Error no controlado: {Message} | Inner: {InnerMessage}",
+                exception.Message,
+                exception.InnerException?.Message);
             var response = new ErrorResponse();
 
             switch (exception)
