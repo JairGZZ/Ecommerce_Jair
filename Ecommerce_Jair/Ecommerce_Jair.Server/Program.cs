@@ -1,5 +1,6 @@
 using System.Text;
 using Ecommerce_Jair.Server.BD.context;
+using Ecommerce_Jair.Server.ExceptionHandler;
 using Ecommerce_Jair.Server.Models;
 using Ecommerce_Jair.Server.Repositories.implementations;
 using Ecommerce_Jair.Server.Repositories.Interfaces;
@@ -13,6 +14,8 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
 builder.Configuration.AddUserSecrets<Program>();
 
@@ -83,6 +86,9 @@ builder.Services.AddCors(options =>
 
 
 var app = builder.Build();
+
+app.UseExceptionHandler(_ => { });
+
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
@@ -105,6 +111,8 @@ if (app.Environment.IsDevelopment())
         options.InjectStylesheet("/static/custom.css"); // Ruta personalizada
     });
 }
+
+
 
 app.UseHttpsRedirection();
 
