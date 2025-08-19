@@ -1,8 +1,7 @@
 namespace Ecommerce_Jair.Server.DTOs;
 
-public class LoginResponseDTO
-{
-    public string Token { get; set; }
-    public string RefreshToken { get; set; }
-    public DateTime AccessTokenExpiresAt { get; set; }
-}
+public record LoginResponseDTO
+(
+    string Token,
+     string RefreshToken,
+     DateTime AccessTokenExpiresAt);

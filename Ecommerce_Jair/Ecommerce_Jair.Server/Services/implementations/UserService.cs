@@ -21,12 +21,12 @@ public class UserService : IUserService
         if (user == null) return null;
 
         var userDTO = new ShowUserDTO
-        {
-            FirstName = user.FirstName,
-            LastName = user.LastName,
-            Email = user.Email,
-            PhoneNumber = user.PhoneNumber
-        };
+        (
+             user.FirstName,
+             user.LastName,
+             user.Email,
+             user.PhoneNumber
+        );
         return userDTO;
 
     }
@@ -35,12 +35,12 @@ public class UserService : IUserService
     {
         var users = await _userRepository.GetAllUsersAsync();
         return users.Select(user => new ShowUserDTO
-        {
-            FirstName = user.FirstName,
-            LastName = user.LastName,
-            Email = user.Email,
-            PhoneNumber = user.PhoneNumber
-        }).ToList();
+        (
+            user.FirstName,
+            user.LastName,
+            user.Email,
+            user.PhoneNumber
+        )).ToList();
     }
 
     public async Task DeleteUserAsync(int userId)
@@ -64,14 +64,7 @@ public class UserService : IUserService
         await _userRepository.SaveChangesAsync();
         return true;
     }
-    public async Task<User> GetUserByEmailAsync(string email)
-    {
-        return await _userRepository.GetUserByEmailAsync(email);
-    }
-    public async Task<bool> EmailExistsAsync(string email)
-    {
-        return await _userRepository.EmailExistsAsync(email);
-    }
+    
     public async Task UpdateLastLoginAsync(int id)
     {
         await _userRepository.UpdateLastLoginAsync(id);

@@ -19,6 +19,7 @@ public class AuthService : IAuthService
     private readonly IUserTokensRepository _userTokensRepository;
     private readonly IUserRoleService _userRoleService;
     private readonly IEmailService _emailService;
+    private readonly IUserRepository _userRepository;
 
     public AuthService(
         IUserService userService,
@@ -37,7 +38,7 @@ public class AuthService : IAuthService
     }
     public async Task<Result> RegisterUserAsync(CreateUserDTO userDTO)
     {
-        var user = await _userService.GetUserByEmailAsync(userDTO.Email);
+        var user = await _userRepository.GetUserByEmailAsync(userDTO.Email);
         if (user != null) return Result.Fail("User already exists");
         if (userDTO.Password != userDTO.ConfirmPassword) return Result.Fail("las cotraseñas no coinciden");
         var newUser = new User
@@ -68,7 +69,7 @@ public class AuthService : IAuthService
     public async Task<TResult<LoginResponseDTO>> AuthenticateUserAsync(LoginRequestDTO loginRequestDTO)
     {
         // 1. Validar usuario y contraseña
-        var user = await ValidateUserCredentialsAsync(loginRequestDTO.Email, loginRequestDTO.Password);
+        var user = await ValidateUserCredentialsAsync(loginRequestDTO.Emai, loginRequestDTO.Password);
 
         if (!user.Success)
             return TResult<LoginResponseDTO>.Fail(user.Error);
@@ -77,12 +78,12 @@ public class AuthService : IAuthService
 
         // 2. Crear el DTO mínimo para generar tokens
         var userTokenDTO = new UserTokenDTO
-        {
-            UserId = user.Data.UserId,
-            FirstName = user.Data.FirstName,
-            LastName = user.Data.LastName,
-            Email = user.Data.Email
-        };
+        (
+             user.Data.UserId,
+           user.Data.FirstName,
+             user.Data.LastName,
+              user.Data.Email
+        );
 
         // 3. Generar accessToken y refreshToken
         var (accessToken, refreshToken) = await CreateTokensForUser(userTokenDTO);
@@ -92,11 +93,11 @@ public class AuthService : IAuthService
 
         // 5. Armar y devolver la respuesta
         var resposeDto = new LoginResponseDTO
-        {
-            Token = accessToken,
-            RefreshToken = refreshToken,
-            AccessTokenExpiresAt = _tokenService.GetTokenExpirationDate()
-        };
+        (
+           accessToken,
+          refreshToken,
+           _tokenService.GetTokenExpirationDate()
+        );
 
         return TResult<LoginResponseDTO>.Ok(resposeDto);
     }
@@ -107,7 +108,7 @@ public class AuthService : IAuthService
     /// </summary>
     private async Task<TResult<User>> ValidateUserCredentialsAsync(string email, string password)
     {
-        var user = await _userService.GetUserByEmailAsync(email);
+        var user = await _userRepository.GetUserByEmailAsync(email);
         if (user == null) return TResult<User>.Fail("Usuario no encontrado o credenciales inválidas");
 
         var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, password);
@@ -125,7 +126,7 @@ public class AuthService : IAuthService
     /// </summary>
     private async Task<(string accessToken, string refreshToken)> CreateTokensForUser(UserTokenDTO userTokenDTO)
     {
-        
+
         var accessToken = await _tokenService.GenerateAccessToken(userTokenDTO);
         string refreshToken = _tokenService.GenerateRefreshToken();
         return (accessToken.Data, refreshToken);
@@ -163,7 +164,7 @@ public class AuthService : IAuthService
     {
         var refreshTokenModel = await _userTokensRepository.GetByTokenAsync(refreshToken, TokenTypes.RefreshToken);
 
-        var isRefreshTokenValid =  await _tokenService.ValidateRefreshToken(refreshToken);
+        var isRefreshTokenValid = await _tokenService.ValidateRefreshToken(refreshToken);
         if (!isRefreshTokenValid.Success)
         {
             return TResult<LoginResponseDTO>.Fail(isRefreshTokenValid.Error);
@@ -172,21 +173,21 @@ public class AuthService : IAuthService
         await _userTokensRepository.InvalidateAsync(refreshToken);
         await _userTokensRepository.SaveChangesAsync();
         var userTokenDTO = new UserTokenDTO
-        {
-            UserId = refreshTokenModel.UserId,
-            FirstName = refreshTokenModel.User.FirstName,
-            LastName = refreshTokenModel.User.LastName,
-            Email = refreshTokenModel.User.Email
-            
-        };
+        (
+           refreshTokenModel.UserId,
+          refreshTokenModel.User.FirstName,
+            refreshTokenModel.User.LastName,
+          refreshTokenModel.User.Email
+
+        );
         (string accessToken, string newRefreshToken) = await CreateTokensForUser(userTokenDTO);
         await SaveRefreshTokenAsync(refreshTokenModel.UserId, newRefreshToken);
-        return TResult<LoginResponseDTO>.Ok( new LoginResponseDTO
-        {
-            Token = accessToken,
-            RefreshToken = newRefreshToken,
-            AccessTokenExpiresAt = _tokenService.GetTokenExpirationDate()
-        });
+        return TResult<LoginResponseDTO>.Ok(new LoginResponseDTO
+        (
+            accessToken,
+            newRefreshToken,
+           _tokenService.GetTokenExpirationDate()
+        ));
     }
 
     public Task<bool> ResetPasswordAsync(string email, string newPassword)

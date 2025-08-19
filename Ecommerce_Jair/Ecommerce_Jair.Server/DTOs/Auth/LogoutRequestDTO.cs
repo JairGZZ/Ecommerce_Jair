@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace Ecommerce_Jair.Server.DTOs.Auth;
-public class LogoutRequestDTO
-{
+public record LogoutRequestDTO
+(
     [Required]
-    public string RefreshToken { get; set; }
-}
+     string RefreshToken 
+);
