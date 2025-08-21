@@ -5,6 +5,7 @@ using Ecommerce_Jair.Server.Models;
 using Ecommerce_Jair.Server.Repositories.implementations;
 using Ecommerce_Jair.Server.Repositories.Interfaces;
 using Ecommerce_Jair.Server.Services.implementations;
+using Ecommerce_Jair.Server.Services.Implementations;
 using Ecommerce_Jair.Server.Services.Interfaces;
 using Ecommerce_Jair.Server.Utils;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -31,6 +32,7 @@ builder.Logging.AddDebug();
 // Add services to the container.
 builder.Services.AddDbContext<EcommerceDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
@@ -72,6 +74,9 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<IUserRoleRepository, UserRoleRepository>();
 builder.Services.AddScoped<IUserRoleService, UserRoleService>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
 
 builder.Services.AddCors(options =>
 {

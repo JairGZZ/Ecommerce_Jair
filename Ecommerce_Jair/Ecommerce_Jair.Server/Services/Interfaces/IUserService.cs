@@ -11,8 +11,7 @@ namespace Ecommerce_Jair.Server.Services.Interfaces
         Task DeleteUserAsync(int userId);
         Task<bool> UpdateUserAsync(int userId, User user);
         Task CreateUserAsync(User user);
-        Task<User> GetUserByEmailAsync(string email);
-        Task<bool> EmailExistsAsync(string email);
+  
         Task UpdateLastLoginAsync(int id);
     }
 }

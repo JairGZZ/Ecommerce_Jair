@@ -17,14 +17,14 @@ public class UserRoleRepository : IUserRoleRepository
         await _context.UserRoles.AddAsync(userRole);
     }
 
-    public Task<UserRole> GetUserRoleAsync(int userId)
+    public async Task<UserRole> GetUserRoleAsync(int userId)
     {
-        return _context.UserRoles.FirstOrDefaultAsync(ur => ur.UserId == userId);
+         return await _context.UserRoles.FirstOrDefaultAsync(ur => ur.UserId == userId);
     }
 
-    public Task SaveChangesAsync()
+    public async Task SaveChangesAsync()
     {
-        return _context.SaveChangesAsync();
+         await _context.SaveChangesAsync();
     }
 
 }
