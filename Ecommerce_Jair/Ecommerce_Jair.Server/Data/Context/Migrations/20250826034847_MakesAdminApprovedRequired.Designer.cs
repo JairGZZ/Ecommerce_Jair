@@ -4,6 +4,7 @@ using Ecommerce_Jair.Server.BD.context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ecommerce_Jair.Server.Migrations
 {
     [DbContext(typeof(EcommerceDbContext))]
-    partial class EcommerceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250826034847_MakesAdminApprovedRequired")]
+    partial class MakesAdminApprovedRequired
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,12 +43,20 @@ namespace Ecommerce_Jair.Server.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
                     b.Property<int?>("ParentCategoryId")
                         .HasColumnType("int")
                         .HasColumnName("ParentCategoryID");
 
                     b.HasKey("CategoryId")
                         .HasName("PK__Categori__19093A2B307D8CCA");
+
+                    b.HasIndex("IsActive", "ParentCategoryId")
+                        .HasDatabaseName("IX_Categories_IsActive_Parent");
 
                     b.HasIndex(new[] { "ParentCategoryId" }, "idx_categories_parent");
 
@@ -300,6 +311,11 @@ namespace Ecommerce_Jair.Server.Migrations
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 2)");
 
@@ -323,6 +339,9 @@ namespace Ecommerce_Jair.Server.Migrations
                     b.HasKey("ProductId")
                         .HasName("PK__Products__B40CC6EDBB16ED13");
 
+                    b.HasIndex("IsActive", "CategoryId")
+                        .HasDatabaseName("IX_Products_IsActive_Category");
+
                     b.HasIndex(new[] { "Sku" }, "UQ__Products__CA1ECF0D23578401")
                         .IsUnique();
 
@@ -340,7 +359,7 @@ namespace Ecommerce_Jair.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReviewId"));
 
-                    b.Property<bool?>("AdminApproved")
+                    b.Property<bool>("AdminApproved")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
@@ -352,6 +371,11 @@ namespace Ecommerce_Jair.Server.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
                         .HasDefaultValueSql("(getdate())");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int")

@@ -90,10 +90,13 @@ public partial class EcommerceDbContext : DbContext
 
             entity.HasIndex(e => e.ParentCategoryId, "idx_categories_parent");
 
+            entity.HasIndex(c => new { c.IsActive, c.ParentCategoryId }).HasDatabaseName("IX_Categories_IsActive_Parent");
+
             entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
             entity.Property(e => e.CategoryName).HasMaxLength(100);
             entity.Property(e => e.Description).HasMaxLength(255);
             entity.Property(e => e.ParentCategoryId).HasColumnName("ParentCategoryID");
+            entity.Property(e => e.IsActive).HasDefaultValue(true);
 
             entity.HasOne(d => d.ParentCategory).WithMany(p => p.InverseParentCategory)
                 .HasForeignKey(d => d.ParentCategoryId)
@@ -241,6 +244,10 @@ public partial class EcommerceDbContext : DbContext
 
             entity.HasIndex(e => e.CategoryId, "idx_products_category");
 
+            entity.HasIndex(p => new { p.IsActive, p.CategoryId })
+            .HasDatabaseName("IX_Products_IsActive_Category");
+
+            entity.Property(e => e.IsActive).HasDefaultValue(true);
             entity.Property(e => e.ProductId).HasColumnName("ProductID");
             entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
             entity.Property(e => e.CreatedAt)
@@ -252,7 +259,7 @@ public partial class EcommerceDbContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("SKU");
             entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
-
+    
             entity.HasOne(d => d.Category).WithMany(p => p.Products)
                 .HasForeignKey(d => d.CategoryId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -266,12 +273,13 @@ public partial class EcommerceDbContext : DbContext
             entity.HasIndex(e => e.ProductId, "idx_reviews_product");
 
             entity.Property(e => e.ReviewId).HasColumnName("ReviewID");
-            entity.Property(e => e.AdminApproved).HasDefaultValue(false);
+            entity.Property(e => e.AdminApproved).HasDefaultValue(false).IsRequired();
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime");
             entity.Property(e => e.ProductId).HasColumnName("ProductID");
             entity.Property(e => e.UserId).HasColumnName("UserID");
+            entity.Property(e => e.IsDeleted).HasDefaultValue(true);
 
             entity.HasOne(d => d.Product).WithMany(p => p.ProductReviews)
                 .HasForeignKey(d => d.ProductId)
@@ -393,6 +401,13 @@ public partial class EcommerceDbContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Wishlist__UserID__6477ECF3");
         });
+
+        //Filtros globales para el soft delete, no olvidar usar
+        //ignorequeryfilters para consultas de admin
+        modelBuilder.Entity<Product>().HasQueryFilter(p => p.IsActive);
+        modelBuilder.Entity<Category>().HasQueryFilter(c => c.IsActive);
+        modelBuilder.Entity<ProductReview>().HasQueryFilter(r => !r.IsDeleted);
+
 
         OnModelCreatingPartial(modelBuilder);
     }
