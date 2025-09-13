@@ -8,9 +8,10 @@ namespace Ecommerce_Jair.Server.Controllers
     {
         private static readonly string[] Summaries = new[]
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+            "aaaaaaaa", "aaaaa", "aaaaa", "Cool", "Mild", "Warm", "Balmy", "Hot", "Swaaaeltering", "aaaaaaaa"
         };
-
+        Type
+        
         private readonly ILogger<WeatherForecastController> _logger;
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger)

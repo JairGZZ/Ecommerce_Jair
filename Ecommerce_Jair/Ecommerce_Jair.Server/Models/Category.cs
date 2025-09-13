@@ -13,6 +13,7 @@ public partial class Category
     public string? Description { get; set; }
 
     public int? ParentCategoryId { get; set; }
+    public bool IsActive { get; set; } = true;
 
     public virtual ICollection<Category> InverseParentCategory { get; set; } = new List<Category>();
     [JsonIgnore]

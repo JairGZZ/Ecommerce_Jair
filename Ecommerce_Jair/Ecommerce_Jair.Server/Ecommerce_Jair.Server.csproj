@@ -4,15 +4,27 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <SpaRoot>..\ecommerce_jair.client</SpaRoot>
-    <SpaProxyLaunchCommand>npm run dev</SpaProxyLaunchCommand>
-    <SpaProxyServerUrl>https://localhost:61167</SpaProxyServerUrl>
-    <UserSecretsId>979572bb-2197-4b07-828f-9e141535e229</UserSecretsId>
+	  <!-- Ruta a tu cliente Angular (carpeta del package.json) -->
+	  <SpaRoot>..\ecommerce_jair.client</SpaRoot>
+
+	  <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
+	  
+	  <SpaProxyServerUrl>http://localhost:4200</SpaProxyServerUrl>
+
+	  <UserSecretsId>979572bb-2197-4b07-828f-9e141535e229</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\**" />
+    <Content Remove="Data\Migrations\**" />
+    <EmbeddedResource Remove="Data\Migrations\**" />
+    <None Remove="Data\Migrations\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MailKit" Version="4.12.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="9.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy">
       <Version>9.*-*</Version>
@@ -30,13 +42,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ecommerce_jair.client\ecommerce_jair.client.esproj">
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
-    </ProjectReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\Migrations\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

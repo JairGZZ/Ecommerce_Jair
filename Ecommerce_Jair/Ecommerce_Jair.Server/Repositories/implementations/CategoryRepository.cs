@@ -37,7 +37,7 @@ namespace Ecommerce_Jair.Server.Repositories.implementations
             {
                 return false;
             }
-            _context.Categories.Remove(category);
+            category.IsActive = false;
             return true;
         }
         public async Task<List<Category>> GetAllCategories()

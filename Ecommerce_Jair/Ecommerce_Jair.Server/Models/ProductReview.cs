@@ -17,7 +17,8 @@ public partial class ProductReview
 
     public DateTime? CreatedAt { get; set; }
 
-    public bool? AdminApproved { get; set; }
+    public bool AdminApproved { get; set; }
+    public bool IsDeleted { get; set; } = false;
 
     public virtual Product Product { get; set; } = null!;
 

@@ -22,7 +22,8 @@ public partial class Product
     public DateTime? UpdatedAt { get; set; }
 
     public string Sku { get; set; } = null!;
-
+    public string? ImageUrl { get; set; }
+    public bool IsActive { get; set; } = true;
     public virtual Category Category { get; set; } = null!;
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
