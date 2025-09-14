@@ -58,10 +58,9 @@ namespace Ecommerce_Jair.Server.Controllers
             return Ok("Producto eliminado con éxito."); 
         }
         [HttpPatch("updateProduct/{id}")]
-        public async Task<IActionResult> UpdateProduct(int id, [FromBody] JsonPatchDocument<UpdateProductDto> dto)
+        public async Task<IActionResult> UpdateProduct(int id, [FromBody] UpdateProductDto dto)
         {
             var result = await _productService.UpdateProductAsync(id, dto);
-
             if (!result.Success)
             {
                 return BadRequest(result.Error);

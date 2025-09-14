@@ -11,6 +11,6 @@ namespace Ecommerce_Jair.Server.Services.Interfaces
         Task<TResult<PagedResult<ProductListItem>>> GetAllProducts(ProductListCriteria criteria, CancellationToken ct);
         Task<TResult<bool>> DeleteProductAsync(int idProduct);
         Task<TResult<ProductDetailsDTO>> GetProductDetail(int idProduct);
-        Task<TResult<ProductCreatedDto>> UpdateProductAsync(int productId, JsonPatchDocument<UpdateProductDto> dto);
+        Task<TResult<ProductCreatedDto>> UpdateProductAsync(int productId, UpdateProductDto dto);
     }
 }

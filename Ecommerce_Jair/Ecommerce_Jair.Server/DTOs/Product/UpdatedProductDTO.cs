@@ -2,12 +2,12 @@
 {
     public record UpdateProductDto
    (
-       string ProductName,
+       string? ProductName,
        string? Description,
-       decimal Price,
-       int Stock,
-       string Sku,
-       int CategoryId,
+       decimal? Price,
+       int? Stock,
+       string? Sku,
+       int? CategoryId,
        string? ImageUrl
    );
 }

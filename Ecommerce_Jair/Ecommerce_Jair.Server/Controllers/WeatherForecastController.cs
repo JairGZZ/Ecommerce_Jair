@@ -6,18 +6,20 @@ namespace Ecommerce_Jair.Server.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "aaaaaaaa", "aaaaa", "aaaaa", "Cool", "Mild", "Warm", "Balmy", "Hot", "Swaaaeltering", "aaaaaaaa"
-        };
-        Type
-        
         private readonly ILogger<WeatherForecastController> _logger;
-
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
         }
+
+        private static readonly string[] Summaries = new[]
+        {
+            "aaaaaaaa", "aaaaa", "aaaaa", "Cool", "Mild", "Warm", "Balmy", "Hot", "Swaaaeltering", "aaaaaaaa"
+        };
+  
+        
+
+      
 
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()

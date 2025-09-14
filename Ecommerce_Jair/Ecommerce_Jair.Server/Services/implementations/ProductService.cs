@@ -123,7 +123,7 @@ namespace Ecommerce_Jair.Server.Services.implementations
             return TResult<ProductDetailsDTO>.Ok(productDto); 
 
         }
-        public async Task<TResult<ProductCreatedDto>> UpdateProductAsync(int productId, JsonPatchDocument<UpdateProductDto> patchDoc)
+        public async Task<TResult<ProductCreatedDto>> UpdateProductAsync(int productId, UpdateProductDto productDto)
         {
             // Obtener el producto por ID
             var product = await _productRepository.GetProductByIdAsync(productId);
@@ -132,40 +132,34 @@ namespace Ecommerce_Jair.Server.Services.implementations
                 return TResult<ProductCreatedDto>.Fail("Producto no encontrado.");
             }
 
-            // Crear un DTO con los datos actuales del producto
-            var productDto = new UpdateProductDto
-            (
-                product.ProductName,
-                product.Description,
-              product.Price,
-           product.Stock,
-                 product.Sku,
-                product.CategoryId,
-                 product.ImageUrl
-            );
-
-            // Aplicar el parche al DTO (esto modificará solo los campos enviados)
-            patchDoc.ApplyTo(productDto);
-
-            // Validaciones de negocio (por ejemplo, precio y stock no pueden ser negativos)
+            // Validaciones de negocio
             if (productDto.Price < 0)
-            {
+            
                 return TResult<ProductCreatedDto>.Fail("El precio no puede ser negativo.");
-            }
+          
+            if (productDto.Price == 0)
+            
+                return TResult<ProductCreatedDto>.Fail("El precio tiene que ser mayor que 0.");
 
             if (productDto.Stock < 0)
-            {
+
                 return TResult<ProductCreatedDto>.Fail("El stock no puede ser negativo.");
-            }
 
             // Actualizar la entidad `product` con los datos del DTO
-            product.ProductName = productDto.ProductName ?? product.ProductName;
-            product.Description = productDto.Description ?? product.Description;
-            product.Price = productDto.Price ;
-            product.Stock = productDto.Stock ;
-            product.Sku = productDto.Sku ?? product.Sku;
-            product.CategoryId = productDto.CategoryId ;
-            product.ImageUrl = productDto.ImageUrl ?? product.ImageUrl;
+            if (productDto.ProductName != null)
+                product.ProductName = productDto.ProductName;
+            if (product.Description != null)
+                product.Description = productDto.Description;
+            if (productDto.Price.HasValue)
+                product.Price = productDto.Price.Value;
+            if (productDto.Stock.HasValue)
+                product.Stock = productDto.Stock.Value;
+            if (productDto.Sku != null)
+                product.Sku = productDto.Sku;
+            if (productDto.CategoryId.HasValue)
+                product.CategoryId = productDto.CategoryId.Value;
+            if (product.ImageUrl != null)
+                product.ImageUrl = productDto.ImageUrl;
             product.UpdatedAt = DateTime.UtcNow;
 
             // Guardar los cambios en la base de datos
