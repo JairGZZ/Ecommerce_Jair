@@ -6,7 +6,6 @@ namespace Ecommerce_Jair.Server.Repositories.Interfaces
     public interface IProductRepository
     {
         Task<Product> CreateProductAsync(Product newProduct);
-        Task<Product?> EditProductAsync(int idProduct, Product newProduct);
         Task<bool> DeleteProductAsync(int idProduct);
         Task<List<Product>> GetAllProductsAsync();
         Task<Product?> GetProductByIdAsync(int idProduct);

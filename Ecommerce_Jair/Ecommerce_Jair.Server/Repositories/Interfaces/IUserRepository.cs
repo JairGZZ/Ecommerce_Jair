@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Ecommerce_Jair.Server.Models;
+using MimeKit.Tnef;
 public interface IUserRepository
 {
     Task<User> GetUserByIdAsync(int userId);
@@ -10,6 +11,7 @@ public interface IUserRepository
     Task SaveChangesAsync();
     Task<User> GetUserByEmailAsync(string email);
     Task<bool> EmailExistsAsync(string email);
+    Task<bool> UserExistsByIdAsync(int idUser);
     Task UpdateLastLoginAsync(int id);
     
 }

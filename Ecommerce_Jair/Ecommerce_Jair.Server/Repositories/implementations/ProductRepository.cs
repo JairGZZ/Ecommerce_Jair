@@ -31,25 +31,6 @@ namespace Ecommerce_Jair.Server.Repositories.implementations
             return true;
             
         }
-
-        public async Task<Product?> EditProductAsync(int idProduct, Product updatedProduct)
-        {
-            var existingProduct = await GetProductByIdAsync(idProduct);
-            if (existingProduct == null)
-            {
-                return null;
-            }
-            existingProduct.ProductName = updatedProduct.ProductName;
-            existingProduct.Description = updatedProduct.Description;
-            existingProduct.Price = updatedProduct.Price;
-            existingProduct.Stock = updatedProduct.Stock;
-            existingProduct.CategoryId = updatedProduct.CategoryId;
-            existingProduct.UpdatedAt = updatedProduct.UpdatedAt;
-            existingProduct.Sku = updatedProduct.Sku;
-            existingProduct.ImageUrl = updatedProduct.ImageUrl;
-
-            return existingProduct;
-        }
         public Task<List<Product>> GetAllProductsAsync()
         {
             return _context.Products.ToListAsync();
